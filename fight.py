@@ -21,9 +21,9 @@ def attack(name_character: str, name_creature: str):
             life_creature = get_creature_life(name_creature) - get_character_strength(name_character)
             life_character = get_character_life(name_character) - get_creature_strength(name_creature)
             # if the creature's life is less than 0, then set life to 0.
-            if life_creature < 0:
+            if life_creature =< 0:
                 set_creature_life(name_creature, 0)
-            if life_character < 0:
+            if life_character =< 0:
                 set_character_life(name_character, 0)
             if life_creature >= 0: 
                 set_creature_life(name_creature,life_creature)
@@ -65,3 +65,4 @@ def attack(name_character: str, name_creature: str):
 
 
 create_creature()
+
