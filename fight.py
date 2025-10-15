@@ -3,7 +3,7 @@ from creature import *
 from character import *
 
 def attack(name_character: str, name_creature: str):
-    """Attak character vs attack creature
+    """Attack character vs attack creature
 
     Parameters
     ----------
@@ -15,12 +15,12 @@ def attack(name_character: str, name_creature: str):
 
     if creature_exists(name_creature) and character_exists(name_character):
 
-        # On regarde si la portée de la creature et du character sont tous les 2 long ou court alors ....  
+        # We check if the range of the creature and the character are both long or short, then....  
         if (get_character_reach(name_character) == "long" and get_creature_reach(name_creature) == "long") or (get_character_reach(name_character) == "short" and get_creature_reach(name_creature) == "short"):
-            # Il y a une variable qui se crée avec la vie actuel de la creature moins la force du character
+            # There is a variable that is created with the creature's current life minus the character's strength.
             life_creature = get_creature_life(name_creature) - get_character_strength(name_character)
             life_character = get_character_life(name_character) - get_creature_strength(name_creature)
-            # si la vie de la creature est inferieur à 0 alors on set la vie à 0
+            # if the creature's life is less than 0, then set life to 0.
             if life_creature < 0:
                 set_creature_life(name_creature, 0)
             if life_character < 0:
@@ -34,15 +34,15 @@ def attack(name_character: str, name_creature: str):
                 money = get_team_money() + 40 + 10 * (get_nb_defeated()+1)
                 set_team_money(money)
                 print("The creature is Dead")
-                print("Il vous reste actuellement " + str(get_character_life(name_character)) + " De vie")
-                print("Vous avez donc maintenant %d d'argent dans votre pot communs" % get_team_money())
+                print("You currently have " + str(get_character_life(name_character)) + " of life")
+                print("So now you have %d money in your common pot" % get_team_money())
                 remove_creature(name_creature)
             else: 
-                print("La creature à mainenant plus que " + str(get_creature_life(name_creature)) + " De vie")
-                print("Il vous reste actuellement "+ str(get_character_life(name_character)) + " de vie")
+                print("The creature now more than " + str(get_creature_life(name_creature)) + " of life")
+                print("You currently have "+ str(get_character_life(name_character)) + " of live")
 
         elif get_character_reach(name_character) == "short" and get_creature_reach(name_creature) == "long":
-            print("Votre personnage n'est pas en mesure d'attaquer la creature")
+            print("Your character is unable to attack the creature.")
         
         elif get_character_reach(name_character) == "long" and get_creature_reach(name_creature) == "short":
             life_creature = get_creature_life(name_creature) - get_character_strength(name_character)
@@ -55,12 +55,13 @@ def attack(name_character: str, name_creature: str):
                 money = get_team_money() + 40 + 10 * (get_nb_defeated()+1)
                 set_team_money(money)
                 print("The creature is Dead")
-                print("Vous avez donc maintenant %d d'argent dans votre pot communs" % get_team_money())
+                print("So now you have %d money in your common pot" % get_team_money())
                 remove_creature(name_creature)
             else: 
-                print("La creature à mainenant plus que " + str(get_creature_life(name_creature)) + " De vie vous avez pris aucun dégat car la creature est à courte portée")
+                print("The creature now more than" + str(get_creature_life(name_creature)) + "You took no damage because the creature is within short range.")
 
     else: 
-        print("Le nom de la creature ou du joueur n'exite pas ")
+        print("The name of the creature or player does not exist.")
+
 
 create_creature()
