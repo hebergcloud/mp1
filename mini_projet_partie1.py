@@ -1,14 +1,17 @@
 from gaming_tools import *
 from random import randint
 reset_game()
-def give_money(money=50):
+def give_money(money:int):
     """
     Give the money to the team.
-    parameters
-    =========
-    money: the amount of money that receive the team(int).
+    Parameters
+    ==========
+    money : int
+        The amount of money given to the team.
     """
-    get_team_money(money)
+    set_team_money(money)
+    print("The team now has :", money)
+give_money(50)
 def create_character(character:str,variety:str):
     """
     Allow the player to creat a character.
@@ -43,7 +46,7 @@ def create_character(character:str,variety:str):
              reach='short reach'
         else:
              reach='longue reach'
-    print('the naw character have been aded and his name is:',character,'\n his variety is :',variety,'\n his strenght is :',strength,'\n his life is :',player_life,'\n his reach is :',reach)
+    print('the character is created his name is:',character,'\n his variety is :',variety,'\n his strenght is :',strength,'\n his life is :',player_life,'\n his reach is :',reach)
 create_character('malak','dwarf')
 
 def upgrade_character(character:str,money:int):
@@ -86,4 +89,5 @@ def upgrade_character(character:str,money:int):
     set_team_money(money)
     money-= cost
     print('the money left is:',money)
+
     upgrade_character('malak',13)
